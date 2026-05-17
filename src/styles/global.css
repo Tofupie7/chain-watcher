@@ -1,0 +1,249 @@
+/* ============ RESET & BASE ============ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Core colors */
+  --bg-primary: #0a0d13;
+  --bg-secondary: #0c1017;
+  --bg-tertiary: #0f1319;
+  --bg-card: #0f1319;
+  --border: #1a1f2b;
+  --border-light: #1e2530;
+
+  /* Text */
+  --text-primary: #f1f5f9;
+  --text-secondary: #c9d1d9;
+  --text-muted: #5a6577;
+  --text-dim: #3d4654;
+
+  /* Accent */
+  --amber: #f59e0b;
+  --amber-dark: #d97706;
+  --amber-glow: rgba(245, 158, 11, 0.15);
+  --amber-subtle: rgba(245, 158, 11, 0.08);
+
+  /* Status */
+  --green: #00dc82;
+  --green-glow: rgba(0, 220, 130, 0.15);
+  --red: #ef4444;
+  --red-glow: rgba(239, 68, 68, 0.15);
+  --purple: #a855f7;
+  --blue: #3b82f6;
+  --yellow: #eab308;
+
+  /* Fonts */
+  --font-ui: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+  /* Sidebar */
+  --sidebar-width: 220px;
+  --sidebar-collapsed: 64px;
+  --topbar-height: 52px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-ui);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+/* ============ SCROLLBAR ============ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+}
+
+/* ============ LAYOUT ============ */
+.app-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left var(--transition-normal);
+  overflow: hidden;
+}
+
+.content-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 24px;
+}
+
+/* ============ CARDS ============ */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ============ BUTTONS ============ */
+.btn {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-amber {
+  background: var(--amber-subtle);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: var(--amber);
+}
+.btn-amber:hover {
+  background: var(--amber-glow);
+}
+
+.btn-primary {
+  background: var(--amber);
+  color: var(--bg-primary);
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: var(--amber-dark);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+.btn-ghost:hover {
+  border-color: var(--border-light);
+  color: var(--text-secondary);
+}
+
+/* ============ INPUTS ============ */
+.input {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 14px;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color var(--transition-fast);
+  width: 100%;
+}
+.input:focus {
+  border-color: var(--amber);
+}
+.input::placeholder {
+  color: var(--text-dim);
+}
+
+/* ============ STATUS DOTS ============ */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.status-dot.connected {
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(0, 220, 130, 0.5);
+}
+.status-dot.disconnected {
+  background: var(--red);
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
+}
+.status-dot.warning {
+  background: var(--amber);
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+}
+
+/* ============ PLACEHOLDER PAGES ============ */
+.page-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  gap: 12px;
+}
+.page-placeholder .icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+.page-placeholder .title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.page-placeholder .subtitle {
+  font-size: 13px;
+  color: var(--text-dim);
+  max-width: 340px;
+  line-height: 1.5;
+}
+.page-placeholder .badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: var(--amber-subtle);
+  color: var(--amber);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  margin-top: 8px;
+}
+
+/* ============ UTILITIES ============ */
+.mono { font-family: var(--font-mono); }
+.text-amber { color: var(--amber); }
+.text-green { color: var(--green); }
+.text-red { color: var(--red); }
+.text-muted { color: var(--text-muted); }
+.text-dim { color: var(--text-dim); }
+.font-bold { font-weight: 700; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
