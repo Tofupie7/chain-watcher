@@ -56,6 +56,7 @@
 | **Arkham Intelligence** | API Key (paste in settings) | Varies | Base only |
 
 DexScreener and Birdeye support both chains and require no changes between Solana and Base. Axiom Trade is Solana-only. BullX Terminal uses the same token extraction approach as Axiom, with BullX Neo covering Solana and BullX Turbo covering Base/EVM chains. For Base, GoldRush provides deep chain data, Bitquery adds real-time WebSocket feeds, and Arkham Intelligence provides wallet-level intelligence and entity labeling.
+Feel free to use your own paid api with better access
 
 ## Customization & Updates
 
